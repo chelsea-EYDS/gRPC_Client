@@ -1,0 +1,20 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:prettier/recommended"
+    ],
+    "plugins": [
+        "prettier",
+        "jest",
+        "import"
+    ],
+    "rules": {
+        "semi": "off",
+        "max-len": 0    
+    }
+}
