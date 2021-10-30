@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package inputs;
+
+service AppController {
+  rpc AddInput (AddInputs) returns (InputsResponse){}
+}
+
+message AddInputs {
+ message Input {
+    message Data {
+      message Image {
+        string url = 1;
+        bool allow_duplicate_url = 2;
+      }
+      message Concept {
+        string id = 1;
+        int32 value = 2;
+      }
+      repeated Concept concepts = 1;         
+    }
+  }
+  repeated Input input = 1;
+}
+
+message InputsResponse {
+  message Status {
+    int32 code = 1;
+    string description = 2;
+  }
+  message Input {
+    string id = 1;
+    string created_at = 2;
+    message Data {    
+      message Image {
+        string url = 1;
+      }
+      message Concept {
+        string id = 1;
+        string name = 2;
+        string app_id = 3;
+        int32 value = 4;
+      }  
+      repeated Concept concepts = 1;
+    }
+    message Status {
+      int32 code = 1;
+      string description = 2;     
+    }
+  }
+  repeated Input input = 1; 
+}
